@@ -2,17 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  const {
-    logo,
-    title,
-    handleTitle,
-    sort,
-    handlePriceSort,
-    limit,
-    handleLimit,
-    skip,
-    handleSkip,
-  } = props;
+  const { logo, title, handleTitle } = props;
   return (
     <header>
       <div className="headerNav">

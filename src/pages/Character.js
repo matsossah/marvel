@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import cover from "../assets/marvel-cover.jpg";
 import Card from "../components/Card.js";
 
-const Comics = () => {
+const Character = () => {
+  const { characterId } = useParams();
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,8 +13,10 @@ const Comics = () => {
     try {
       const fetchData = async () => {
         const response = await axios.get(
-          `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=UVdhLoz6npT9W9Id&c`
+          `https://lereacteur-marvel-api.herokuapp.com/comics?characterId=${characterId}&apiKey=UVdhLoz6npT9W9Id&c`
         );
+
+        console.log({ response });
         setComics(response.data.results);
         setIsLoading(false);
       };
@@ -21,7 +24,7 @@ const Comics = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [characterId]);
 
   return isLoading ? (
     <p>Loading...</p>
@@ -46,4 +49,4 @@ const Comics = () => {
   );
 };
 
-export default Comics;
+export default Character;

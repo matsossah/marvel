@@ -4,10 +4,10 @@ const Card = (props) => {
   const { thumbnail, name, description } = props;
   return (
     <div className="card">
-      <img src={thumbnail} />
+      <img src={thumbnail} alt="thumbnail" />
       <div className="card-body">
         <h2>{name}</h2>
-        <p>{description}</p>
+        {description && <p>{description}</p>}
         <h5>LVQM</h5>
       </div>
     </div>
