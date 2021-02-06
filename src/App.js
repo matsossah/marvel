@@ -42,8 +42,7 @@ const App = () => {
         const response = await axios.get(
           `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=UVdhLoz6npT9W9Id`
         );
-        console.log(response.data);
-        setData(response.data);
+        setData(response.data.results);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -77,15 +76,15 @@ const App = () => {
         handleSkip={handleSkip}
       />
       <Switch>
-        <Route
-          path="/comics"
-          children={<Comics data={data} isLoading={isLoading} />}
-        />
-        <Route
-          path="/favorites"
-          children={<Favorites data={data} isLoading={isLoading} />}
-        />
-        <Route path="/" children={<Home data={data} isLoading={isLoading} />} />
+        <Route path="/comics">
+          <Comics data={data} />
+        </Route>
+        <Route path="/favorites">
+          <Favorites data={data} />
+        </Route>
+        <Route path="/">
+          <Home data={data} isLoading={isLoading} />
+        </Route>
       </Switch>
     </Router>
   );
