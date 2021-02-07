@@ -3,10 +3,14 @@ import axios from "axios";
 import cover from "../assets/marvel-cover.jpg";
 import Card from "../components/Card.js";
 import Cookies from "js-cookie";
+import qs from "qs";
+import { useDebounce } from "use-debounce";
 
 const Comics = () => {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [comicSearch, setComicSearch] = useState("");
+  const [debouncedComicSearch] = useDebounce(comicSearch, 1500);
 
   const handleFavorite = (comic) => {
     let elem = {
@@ -30,18 +34,31 @@ const Comics = () => {
   useEffect(() => {
     try {
       const fetchData = async () => {
+        const params = {
+          title: debouncedComicSearch,
+          apiKey: "UVdhLoz6npT9W9Id",
+          // sort: sort,
+          // limit: limit,
+          // skip: skip,
+        };
+        const queryParams = qs.stringify(params);
         const response = await axios.get(
-          `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=UVdhLoz6npT9W9Id`
+          `https://lereacteur-marvel-api.herokuapp.com/comics?${queryParams}`
         );
-        console.log(response.data);
-        setComics(response.data.results);
+        let newData = [...response.data.results];
+        newData.sort((a, b) => (a.title > b.title ? 1 : -1));
+        setComics(newData);
         setIsLoading(false);
       };
       fetchData();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [debouncedComicSearch]);
+
+  const handleComicSearch = (event) => {
+    setComicSearch(event.target.value);
+  };
 
   return isLoading ? (
     <p>Loading...</p>
@@ -49,6 +66,17 @@ const Comics = () => {
     <div>
       <div className="cover">
         <img className="cover" src={cover} alt="logo" />
+      </div>
+      <div>
+        <input
+          className="search-bar"
+          type="text"
+          value={comicSearch}
+          placeholder="Search..."
+          onChange={(event) => {
+            handleComicSearch(event);
+          }}
+        />
       </div>
       <div className="cards">
         {comics.map((comic, index) => {
