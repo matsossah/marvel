@@ -13,11 +13,11 @@ const Character = () => {
     try {
       const fetchData = async () => {
         const response = await axios.get(
-          `https://lereacteur-marvel-api.herokuapp.com/comics?characterId=${characterId}&apiKey=UVdhLoz6npT9W9Id&c`
+          `https://lereacteur-marvel-api.herokuapp.com/comics/${characterId}?apiKey=UVdhLoz6npT9W9Id`
         );
 
         console.log({ response });
-        setComics(response.data.results);
+        setComics(response.data.comics);
         setIsLoading(false);
       };
       fetchData();
