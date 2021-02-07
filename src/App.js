@@ -6,9 +6,9 @@ import logo from "./assets/marvel-logo.png";
 import axios from "axios";
 // import qs from "qs";
 
-import Home from "./pages/Home.js";
+import Characters from "./pages/Characters.js";
 import Character from "./pages/Character.js";
-import Comics from "./pages/Character.js";
+import Comics from "./pages/Comics.js";
 import Favorites from "./pages/Favorites.js";
 import Header from "./components/Header.js";
 import { useDebounce } from "use-debounce";
@@ -56,14 +56,14 @@ const App = () => {
         <Route path="/comics/:characterId">
           <Character />
         </Route>
-        <Route path="/comics/">
+        <Route path="/comics">
           <Comics />
         </Route>
         <Route path="/favorites">
           <Favorites data={data} />
         </Route>
         <Route path="/">
-          <Home data={data} isLoading={isLoading} />
+          <Characters data={data} isLoading={isLoading} />
         </Route>
       </Switch>
     </Router>

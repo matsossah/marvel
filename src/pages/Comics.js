@@ -12,8 +12,9 @@ const Comics = () => {
     try {
       const fetchData = async () => {
         const response = await axios.get(
-          `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=UVdhLoz6npT9W9Id&c`
+          `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=UVdhLoz6npT9W9Id`
         );
+        console.log(response.data);
         setComics(response.data.results);
         setIsLoading(false);
       };

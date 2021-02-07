@@ -6,6 +6,7 @@ import Card from "../components/Card.js";
 
 const Character = () => {
   const { characterId } = useParams();
+  console.log(characterId);
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,7 +25,7 @@ const Character = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [characterId]);
+  }, []);
 
   return isLoading ? (
     <p>Loading...</p>

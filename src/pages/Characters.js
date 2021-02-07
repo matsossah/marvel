@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import cover from "../assets/marvel-cover.jpg";
 import Card from "../components/Card.js";
 
-const Home = (props) => {
+const Characters = (props) => {
   const { isLoading, data } = props;
 
   return isLoading ? (
@@ -32,4 +32,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default Characters;
