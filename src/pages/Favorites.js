@@ -26,6 +26,7 @@ const Favorites = (props) => {
       {favorites.map((element, index) => {
         return (
           <Card
+            key={element._id}
             name={element.name}
             description={element.description}
             display={"none"}
@@ -33,7 +34,6 @@ const Favorites = (props) => {
           />
         );
       })}
-      <div>Favorites</div>
     </div>
   );
 };

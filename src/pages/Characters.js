@@ -40,7 +40,6 @@ const Characters = (props) => {
               <Card
                 name={character.name}
                 description={character.description}
-                display={""}
                 handleFavorite={() => handleFavorite(character)}
                 thumbnail={
                   character.thumbnail.path + "." + character.thumbnail.extension

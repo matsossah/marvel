@@ -2,10 +2,30 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import cover from "../assets/marvel-cover.jpg";
 import Card from "../components/Card.js";
+import Cookies from "js-cookie";
 
 const Comics = () => {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleFavorite = (comic) => {
+    let elem = {
+      id: comic._id,
+      name: comic.title,
+      description: comic.description,
+      thumbnail: comic.thumbnail.path + "." + comic.thumbnail.extension,
+    };
+    let userFavorites = JSON.parse(Cookies.get("userFavorites"));
+    if (userFavorites) {
+      userFavorites.push(elem);
+      var json_str = JSON.stringify(userFavorites);
+      Cookies.set("userFavorites", json_str, { expires: 200 });
+    } else {
+      let arr = [elem];
+      var json_str = JSON.stringify(arr);
+      Cookies.set("userFavorites", json_str, { expires: 200 });
+    }
+  };
 
   useEffect(() => {
     try {
@@ -34,8 +54,9 @@ const Comics = () => {
         {comics.map((comic, index) => {
           return (
             <Card
-              key={index}
+              key={comic._id}
               name={comic.title}
+              handleFavorite={() => handleFavorite(comic)}
               description={comic.description}
               thumbnail={comic.thumbnail.path + "." + comic.thumbnail.extension}
             />
