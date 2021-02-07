@@ -14,7 +14,7 @@ const Favorites = (props) => {
       setFavorites(favorites);
       setIsLoading(false);
     }
-  }, []);
+  }, [favorites]);
 
   return isLoading ? (
     <p>Loading</p>

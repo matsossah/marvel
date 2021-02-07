@@ -22,8 +22,8 @@ const Comics = () => {
       Cookies.set("userFavorites", json_str, { expires: 200 });
     } else {
       let arr = [elem];
-      var json_str = JSON.stringify(arr);
-      Cookies.set("userFavorites", json_str, { expires: 200 });
+      var json_string = JSON.stringify(arr);
+      Cookies.set("userFavorites", json_string, { expires: 200 });
     }
   };
 

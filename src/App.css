@@ -121,3 +121,9 @@ header p {
 .none {
   display: none;
 }
+
+.search-bar {
+  width: 100%;
+  height: 40px;
+  background-color: blueviolet;
+}

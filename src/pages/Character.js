@@ -25,7 +25,7 @@ const Character = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [characterId]);
 
   return isLoading ? (
     <p>Loading...</p>

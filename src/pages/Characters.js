@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import cover from "../assets/marvel-cover.jpg";
 import Card from "../components/Card.js";
 import Cookies from "js-cookie";
 
 const Characters = (props) => {
-  const { isLoading, data } = props;
+  const { isLoading, data, characterSearch, handleCharacterSearch } = props;
 
   const handleFavorite = (character) => {
     let elem = {
@@ -21,8 +21,8 @@ const Characters = (props) => {
       Cookies.set("userFavorites", json_str, { expires: 200 });
     } else {
       let arr = [elem];
-      var json_str = JSON.stringify(arr);
-      Cookies.set("userFavorites", json_str, { expires: 200 });
+      var json_string = JSON.stringify(arr);
+      Cookies.set("userFavorites", json_string, { expires: 200 });
     }
   };
 
@@ -32,6 +32,17 @@ const Characters = (props) => {
     <div>
       <div className="cover">
         <img className="cover" src={cover} alt="logo" />
+      </div>
+      <div>
+        <input
+          className="search-bar"
+          type="text"
+          value={characterSearch}
+          placeholder="Search..."
+          onChange={(event) => {
+            handleCharacterSearch(event);
+          }}
+        />
       </div>
       <div className="cards">
         {data.map((character, index) => {
