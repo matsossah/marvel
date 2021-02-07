@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import cover from "../assets/marvel-cover.jpg";
 import Card from "../components/Card.js";
