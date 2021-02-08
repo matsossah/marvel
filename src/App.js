@@ -22,7 +22,6 @@ const App = () => {
     const fetchData = async () => {
       const params = {
         name: debouncedCharacterSearch,
-        apiKey: "UVdhLoz6npT9W9Id",
         // sort: sort,
         // limit: limit,
         // skip: skip,
@@ -30,7 +29,7 @@ const App = () => {
       const queryParams = qs.stringify(params);
       try {
         const response = await axios.get(
-          `https://lereacteur-marvel-api.herokuapp.com/characters?${queryParams}`
+          `http://localhost:3200?${queryParams}`
         );
         setData(response.data.results);
         setLoading(false);

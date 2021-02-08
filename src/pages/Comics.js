@@ -36,14 +36,13 @@ const Comics = () => {
       const fetchData = async () => {
         const params = {
           title: debouncedComicSearch,
-          apiKey: "UVdhLoz6npT9W9Id",
           // sort: sort,
           // limit: limit,
           // skip: skip,
         };
         const queryParams = qs.stringify(params);
         const response = await axios.get(
-          `https://lereacteur-marvel-api.herokuapp.com/comics?${queryParams}`
+          `http://localhost:3200/comics?${queryParams}`
         );
         let newData = [...response.data.results];
         newData.sort((a, b) => (a.title > b.title ? 1 : -1));

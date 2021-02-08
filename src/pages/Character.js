@@ -6,7 +6,6 @@ import Card from "../components/Card.js";
 
 const Character = () => {
   const { characterId } = useParams();
-  console.log(characterId);
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,11 +13,12 @@ const Character = () => {
     try {
       const fetchData = async () => {
         const response = await axios.get(
-          `https://lereacteur-marvel-api.herokuapp.com/comics/${characterId}?apiKey=UVdhLoz6npT9W9Id`
+          `http://localhost:3200/comics/${characterId}`
         );
-
-        console.log({ response });
-        setComics(response.data.comics);
+        console.log(response);
+        let newData = [...response.data.comics];
+        newData.sort((a, b) => (a.title > b.title ? 1 : -1));
+        setComics(newData);
         setIsLoading(false);
       };
       fetchData();
