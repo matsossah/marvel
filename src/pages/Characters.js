@@ -15,7 +15,7 @@ const Characters = (props) => {
       thumbnail: character.thumbnail.path + "." + character.thumbnail.extension,
     };
     let userFavorites = [];
-    if (Cookies.get("userFavorites")) {
+    if (Cookies.get("userFavorites") !== undefined) {
       userFavorites = [...JSON.parse(Cookies.get("userFavorites"))];
     }
 
