@@ -10,7 +10,9 @@ const Card = (props) => {
         {description && <p>{description}</p>}
         <div className="card-bottom">
           <h5>LVQM</h5>
-          <button className={`favorite ${display}`} onClick={handleFavorite} />
+          <button className={`favorite ${display}`} onClick={handleFavorite}>
+            ❤️
+          </button>
         </div>
       </div>
     </div>
