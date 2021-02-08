@@ -21,7 +21,7 @@ const Comics = () => {
     };
 
     let userFavorites = [];
-    if (Cookies.get("userFavorites")) {
+    if (Cookies.get("userFavorites") !== undefined) {
       userFavorites = [...JSON.parse(Cookies.get("userFavorites"))];
     }
 
