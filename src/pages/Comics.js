@@ -44,7 +44,6 @@ const Comics = () => {
         const response = await axios.get(
           `https://marvel-backend-28.herokuapp.com/comics?${queryParams}`
         );
-        console.log(response);
         let newData = [...response.data.results];
         newData.sort((a, b) => (a.name > b.name ? 1 : -1));
         setComics(newData);

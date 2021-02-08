@@ -5,7 +5,7 @@ import Card from "../components/Card.js";
 
 const Favorites = (props) => {
   const [favorites, setFavorites] = useState(
-    JSON.parse(Cookies.get("userFavorites")) || null
+    JSON.parse(Cookies.get("userFavorites")) || ""
   );
   const [isLoading, setIsLoading] = useState(true);
 
