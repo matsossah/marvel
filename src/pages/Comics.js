@@ -19,16 +19,15 @@ const Comics = () => {
       description: comic.description,
       thumbnail: comic.thumbnail.path + "." + comic.thumbnail.extension,
     };
-    let userFavorites = JSON.parse(Cookies.get("userFavorites"));
-    if (userFavorites) {
-      userFavorites.push(elem);
-      var json_str = JSON.stringify(userFavorites);
-      Cookies.set("userFavorites", json_str, { expires: 200 });
-    } else {
-      let arr = [elem];
-      var json_string = JSON.stringify(arr);
-      Cookies.set("userFavorites", json_string, { expires: 200 });
+
+    let userFavorites = [];
+    if (Cookies.get("userFavorites")) {
+      userFavorites = [...JSON.parse(Cookies.get("userFavorites"))];
     }
+
+    userFavorites.push(elem);
+    var json_str = JSON.stringify(userFavorites);
+    Cookies.set("userFavorites", json_str, { expires: 200 });
   };
 
   useEffect(() => {

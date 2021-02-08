@@ -27,9 +27,10 @@ const Favorites = (props) => {
         <img className="cover" src={cover} alt="logo" />
       </div>
       {favorites.map((element, index) => {
+        console.log(element);
         return (
           <Card
-            key={element._id}
+            key={element.id}
             name={element.name}
             description={element.description}
             display={"none"}
