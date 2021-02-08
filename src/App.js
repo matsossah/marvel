@@ -29,7 +29,7 @@ const App = () => {
       const queryParams = qs.stringify(params);
       try {
         const response = await axios.get(
-          `http://localhost:3200?${queryParams}`
+          `https://marvel-backend-28.herokuapp.com?${queryParams}`
         );
         setData(response.data.results);
         setLoading(false);

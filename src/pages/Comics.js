@@ -42,10 +42,11 @@ const Comics = () => {
         };
         const queryParams = qs.stringify(params);
         const response = await axios.get(
-          `http://localhost:3200/comics?${queryParams}`
+          `https://marvel-backend-28.herokuapp.com/comics?${queryParams}`
         );
+        console.log(response);
         let newData = [...response.data.results];
-        newData.sort((a, b) => (a.title > b.title ? 1 : -1));
+        newData.sort((a, b) => (a.name > b.name ? 1 : -1));
         setComics(newData);
         setIsLoading(false);
       };
@@ -82,7 +83,7 @@ const Comics = () => {
           return (
             <Card
               key={comic._id}
-              name={comic.title}
+              name={comic.name}
               handleFavorite={() => handleFavorite(comic)}
               description={comic.description}
               thumbnail={comic.thumbnail.path + "." + comic.thumbnail.extension}
