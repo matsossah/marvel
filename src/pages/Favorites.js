@@ -4,9 +4,12 @@ import Cookies from "js-cookie";
 import Card from "../components/Card.js";
 
 const Favorites = (props) => {
-  const [favorites, setFavorites] = useState(
-    JSON.parse(Cookies.get("userFavorites")) || ""
-  );
+  let cookieFavorites = [];
+  if (Cookies.get("userFavorites")) {
+    cookieFavorites = JSON.parse(Cookies.get("userFavorites"));
+  }
+
+  const [favorites, setFavorites] = useState(cookieFavorites);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

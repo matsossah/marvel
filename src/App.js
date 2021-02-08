@@ -31,6 +31,7 @@ const App = () => {
         const response = await axios.get(
           `https://marvel-backend-28.herokuapp.com?${queryParams}`
         );
+        console.log(response);
         setData(response.data.results);
         setLoading(false);
       } catch (error) {
